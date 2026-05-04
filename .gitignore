@@ -11,3 +11,7 @@ jackal_helper/config/sensors
 
 # Singularity file
 *.sif
+
+build
+install
+log

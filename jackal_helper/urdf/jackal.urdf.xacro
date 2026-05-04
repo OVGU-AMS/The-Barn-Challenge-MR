@@ -38,7 +38,7 @@
     <visual>
       <origin xyz="0 0 ${footprint_vertical_offset}" rpy="${PI/2} 0 ${PI/2}"/>
       <geometry>
-        <mesh filename="package://jackal_description/meshes/jackal-base.stl"/>
+        <mesh filename="package://jackal_helper/meshes/jackal-base.stl"/>
       </geometry>
       <material name="dark_grey" />
     </visual>
@@ -59,20 +59,6 @@
         izz="0.4485"/>
       </inertial>
   </link>
-
-
-  <joint name="front_fender_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="chassis_link" />
-    <child link="front_fender_link" />
-  </joint>
-
-
-  <joint name="rear_fender_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 ${PI}"/>
-    <parent link="chassis_link" />
-    <child link="rear_fender_link" />
-  </joint>
 
 
   <!-- Bring in simulation data for Gazebo. -->
