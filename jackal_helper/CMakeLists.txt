@@ -47,7 +47,7 @@ install(PROGRAMS
 )
 
 # Install config launch world 
-install(DIRECTORY config launch worlds
+install(DIRECTORY config launch worlds urdf meshes
   DESTINATION share/${PROJECT_NAME}
 )
 
