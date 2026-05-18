@@ -23,6 +23,8 @@ def generate_launch_description():
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
     launch_dir = os.path.join(bringup_dir, 'launch')
+    local_bringup_dir = get_package_share_directory('jackal_helper')
+    local_launch_dir = os.path.join(local_bringup_dir, 'launch')
     sim_dir = get_package_share_directory('nav2_minimal_tb3_sim')
     jackal_dir = get_package_share_directory('jackal_helper')
 
@@ -178,7 +180,7 @@ def generate_launch_description():
     )
 
     bringup_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'bringup_launch.py')),
+        PythonLaunchDescriptionSource(os.path.join(local_launch_dir, 'bringup_launch.py')),
         launch_arguments={
             'namespace': namespace,
             'use_namespace': use_namespace,
