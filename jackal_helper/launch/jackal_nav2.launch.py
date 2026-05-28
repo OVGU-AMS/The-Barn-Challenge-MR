@@ -137,7 +137,7 @@ def generate_launch_description():
 
     declare_world_cmd = DeclareLaunchArgument(
         'world',
-        default_value=os.path.join(sim_dir, 'worlds', 'tb3_sandbox.sdf.xacro'),
+        default_value=os.path.join(jackal_dir, 'worlds','037', '037_aruco.sdf'),
         description='Full path to world model file to load',
     )
 
@@ -202,7 +202,7 @@ def generate_launch_description():
     world_sdf_xacro = ExecuteProcess(
         cmd=['xacro', '-o', world_sdf, ['headless:=', headless], world])
     gazebo_server = ExecuteProcess(
-        cmd=['gz', 'sim', '-r', '-s', world_sdf],
+        cmd=['gz', 'sim', '--render-engine','ogre','-r', '-s', world_sdf],
         output='screen',
         condition=IfCondition(use_simulator)
     )
@@ -220,7 +220,7 @@ def generate_launch_description():
         ),
         condition=IfCondition(PythonExpression(
             [use_simulator, ' and not ', headless])),
-        launch_arguments={'gz_args': ['-v4 -g ']}.items(),
+        launch_arguments={'gz_args': ['-v4 -g --render-engine ogre']}.items(),
     )
 
     gz_robot = IncludeLaunchDescription(

@@ -47,7 +47,7 @@ install(PROGRAMS
 )
 
 # Install config launch world 
-install(DIRECTORY config launch worlds urdf meshes rviz params
+install(DIRECTORY config launch worlds urdf meshes rviz params materials
   DESTINATION share/${PROJECT_NAME}
 )
 
