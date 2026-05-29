@@ -101,7 +101,7 @@ def generate_launch_description():
     )
 
     declare_params_file_cmd_ekf = DeclareLaunchArgument(
-        'params_file',
+        'params_file_ekf',
         default_value=os.path.join(local_bringup_dir, 'params', 'ekf_params.yaml'),
         description='Full path to the ROS2 parameters file to use for the ekf',
     )

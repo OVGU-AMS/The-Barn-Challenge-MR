@@ -142,7 +142,7 @@ def generate_launch_description():
     )
 
     declare_robot_name_cmd = DeclareLaunchArgument(
-        'robot_name', default_value='turtlebot3_waffle', description='name of the robot'
+        'robot_name', default_value='jackal', description='name of the robot'
     )
 
     declare_robot_sdf_cmd = DeclareLaunchArgument(
@@ -225,7 +225,7 @@ def generate_launch_description():
 
     gz_robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(sim_dir, 'launch', 'spawn_tb3.launch.py')),
+            os.path.join(jackal_dir, 'launch', 'spawn_jackal.launch.py')),
         launch_arguments={'namespace': namespace,
                           'use_sim_time': use_sim_time,
                           'robot_name': robot_name,
