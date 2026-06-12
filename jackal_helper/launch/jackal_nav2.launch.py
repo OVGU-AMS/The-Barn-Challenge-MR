@@ -14,7 +14,8 @@ from launch.actions import (
 from launch.conditions import IfCondition
 from launch.event_handlers import OnShutdown
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PythonExpression
+from launch.substitutions import LaunchConfiguration, PythonExpression, Command
+from launch_ros.parameter_descriptions import ParameterValue
 
 from launch_ros.actions import Node
 
@@ -163,7 +164,7 @@ def generate_launch_description():
         namespace=namespace,
         output='screen',
         parameters=[
-            {'use_sim_time': use_sim_time, 'robot_description': robot_description}
+            {'use_sim_time': use_sim_time, 'robot_description': ParameterValue(Command(['xacro ', urdf]), value_type=str)}
         ],
         remappings=remappings,
     )
