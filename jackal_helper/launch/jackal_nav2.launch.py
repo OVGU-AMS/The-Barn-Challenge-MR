@@ -10,6 +10,7 @@ from launch.actions import (
     IncludeLaunchDescription,
     OpaqueFunction,
     RegisterEventHandler,
+    SetEnvironmentVariable
 )
 from launch.conditions import IfCondition
 from launch.event_handlers import OnShutdown
@@ -73,7 +74,7 @@ def generate_launch_description():
 
     declare_slam_cmd = DeclareLaunchArgument(
         'slam', default_value='False', description='Whether run a SLAM'
-    )
+    )    
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
@@ -203,10 +204,12 @@ def generate_launch_description():
     world_sdf_xacro = ExecuteProcess(
         cmd=['xacro', '-o', world_sdf, ['headless:=', headless], world])
     gazebo_server = ExecuteProcess(
-        cmd=['gz', 'sim', '--render-engine','ogre','-r', '-s', world_sdf],
+        cmd=['gz', 'sim', '-r', '-s', world_sdf],
         output='screen',
         condition=IfCondition(use_simulator)
     )
+    set_env_vars_gz = SetEnvironmentVariable(
+        'LIBGL_ALWAYS_SOFTWARE', "1")
 
     remove_temp_sdf_file = RegisterEventHandler(event_handler=OnShutdown(
         on_shutdown=[
@@ -221,7 +224,7 @@ def generate_launch_description():
         ),
         condition=IfCondition(PythonExpression(
             [use_simulator, ' and not ', headless])),
-        launch_arguments={'gz_args': ['-v4 -g --render-engine ogre']}.items(),
+        launch_arguments={'gz_args': ['-v4 -g']}.items(),
     )
 
     gz_robot = IncludeLaunchDescription(
@@ -260,6 +263,8 @@ def generate_launch_description():
     ld.add_action(declare_robot_name_cmd)
     ld.add_action(declare_robot_sdf_cmd)
     ld.add_action(declare_use_respawn_cmd)
+
+    ld.add_action(set_env_vars_gz)
 
     ld.add_action(world_sdf_xacro)
     ld.add_action(remove_temp_sdf_file)
