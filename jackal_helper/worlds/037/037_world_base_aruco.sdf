@@ -28,7 +28,23 @@
     <!-- INCLUDE BASE ROOM -->
     <include>
       <uri>package://jackal_helper/worlds/037/037_base.sdf</uri>
+    </include>    
+    
+    <!-- INCLUDE Obstacles -->
+    <include>
+      <uri>package://jackal_helper/worlds/037/037_obstacles_base.sdf</uri>
     </include>
+
+    <!-- INCLUDE ARUCO default -->
+    <include>
+      <uri>package://jackal_helper/worlds/037/037_aruco_default.sdf</uri>
+    </include>
+
+    <!-- INCLUDE ARUCO base -->
+    <include>
+      <uri>package://jackal_helper/worlds/037/037_aruco_base.sdf</uri>
+    </include>
+
 
         <!-- Sun and physics -->
     <light name="sun_light" type="point">

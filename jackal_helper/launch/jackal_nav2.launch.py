@@ -50,7 +50,7 @@ def generate_launch_description():
     world = LaunchConfiguration('world')
     pose = {
         'x': LaunchConfiguration('x_pose', default='-2.00'),
-        'y': LaunchConfiguration('y_pose', default='-0.50'),
+        'y': LaunchConfiguration('y_pose', default='-3.00'),
         'z': LaunchConfiguration('z_pose', default='0.20'),
         'R': LaunchConfiguration('roll', default='0.00'),
         'P': LaunchConfiguration('pitch', default='0.00'),
@@ -139,7 +139,7 @@ def generate_launch_description():
 
     declare_world_cmd = DeclareLaunchArgument(
         'world',
-        default_value=os.path.join(jackal_dir, 'worlds','037', '037_aruco.sdf'),
+        default_value=os.path.join(jackal_dir, 'worlds','037', '037_world_base_aruco.sdf'),
         description='Full path to world model file to load',
     )
 
