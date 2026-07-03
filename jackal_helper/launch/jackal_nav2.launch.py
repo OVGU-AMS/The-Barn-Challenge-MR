@@ -78,7 +78,7 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(bringup_dir, 'maps', 'tb3_sandbox.yaml'),
+        default_value=os.path.join(local_bringup_dir, 'maps','037_aruco_base', '037_world_base_aruco.yaml'),
     )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
